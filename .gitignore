@@ -1,0 +1,12 @@
+logs/
+airflow.db
+*.pyc
+__pycache__/
+
+
+
+
+^X
+
+
+
