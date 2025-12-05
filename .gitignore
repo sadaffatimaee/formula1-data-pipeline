@@ -1,12 +1,17 @@
+# Airflow logs
 logs/
-airflow.db
-*.pyc
+
+# dbt build artifacts
+dbt/target/
+dbt/dbt_packages/
+dbt/logs/
+
+# Python cache
 __pycache__/
+*.pyc
 
-
-
-
-^X
+# Environment files
+.env
 
 
 

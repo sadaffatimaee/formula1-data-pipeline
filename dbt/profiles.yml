@@ -1,0 +1,13 @@
+formula1_dbt:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: LVB17920.us-west-2
+      user: JELLYFISH
+      password: Sadaf123456789
+      role: TRAINING_ROLE
+      warehouse: JELLYFISH_QUERY_WH
+      database: USER_DB_JELLYFISH
+      schema: ANALYTICS
+      threads: 4

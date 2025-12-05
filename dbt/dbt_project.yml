@@ -1,0 +1,19 @@
+name: 'formula1_dbt'
+version: '1.0.0'
+profile: 'formula1_dbt'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  formula1_dbt:
+    +database: USER_DB_JELLYFISH
+    +materialized: table

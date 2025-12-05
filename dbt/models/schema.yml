@@ -1,0 +1,179 @@
+version: 2
+
+models:
+
+  # ------------------------------
+  # STAGING MODELS
+  # ------------------------------
+
+  - name: stg_openf1_laps_historical
+    columns:
+      - name: meeting_key
+        tests: [not_null]
+      - name: session_key
+        tests: [not_null]
+      - name: driver_number
+        tests: [not_null]
+      - name: lap_number
+        tests: [not_null]
+
+  - name: stg_openf1_laps_realtime
+    columns:
+      - name: meeting_key
+        tests: [not_null]
+      - name: session_key
+        tests: [not_null]
+      - name: driver_number
+        tests: [not_null]
+      - name: lap_number
+        tests: [not_null]
+
+  - name: stg_openf1_position_historical
+    columns:
+      - name: meeting_key
+        tests: [not_null]
+      - name: session_key
+        tests: [not_null]
+      - name: driver_number
+        tests: [not_null]
+      - name: event_timestamp
+        tests: [not_null]
+
+  - name: stg_openf1_position_realtime
+    columns:
+      - name: meeting_key
+        tests: [not_null]
+      - name: session_key
+        tests: [not_null]
+      - name: driver_number
+        tests: [not_null]
+      - name: event_timestamp
+        tests: [not_null]
+
+  - name: stg_openf1_race_control_historical
+    columns:
+      - name: meeting_key
+        tests: [not_null]
+      - name: session_key
+        tests: [not_null]
+      - name: event_timestamp
+        tests: [not_null]
+      - name: message
+        tests: [not_null]
+
+  - name: stg_openf1_race_control_realtime
+    columns:
+      - name: meeting_key
+        tests: [not_null]
+      - name: session_key
+        tests: [not_null]
+      - name: event_timestamp
+        tests: [not_null]
+      - name: message
+        tests: [not_null]
+
+
+  # ------------------------------
+  # INTERMEDIATE UNION MODELS
+  # ------------------------------
+
+  - name: int_openf1_laps_all
+    columns:
+      - name: meeting_key
+        tests: [not_null]
+      - name: session_key
+        tests: [not_null]
+      - name: driver_number
+        tests: [not_null]
+      - name: lap_number
+        tests: [not_null]
+
+  - name: int_openf1_position_all
+    columns:
+      - name: meeting_key
+        tests: [not_null]
+      - name: session_key
+        tests: [not_null]
+      - name: driver_number
+        tests: [not_null]
+      - name: event_timestamp
+        tests: [not_null]
+
+  - name: int_openf1_race_control_all
+    columns:
+      - name: meeting_key
+        tests: [not_null]
+      - name: session_key
+        tests: [not_null]
+      - name: event_timestamp
+        tests: [not_null]
+      - name: message
+        tests: [not_null]
+
+
+  # ------------------------------
+  # INTERMEDIATE FEATURE MODELS
+  # ------------------------------
+
+  - name: int_session_driver_laps
+    columns:
+      - name: meeting_key
+        tests: [not_null]
+      - name: session_key
+        tests: [not_null]
+      - name: driver_number
+        tests: [not_null]
+      - name: lap_number
+        tests: [not_null]
+
+  - name: int_driver_lap_features
+    columns:
+      - name: meeting_key
+        tests: [not_null]
+      - name: session_key
+        tests: [not_null]
+      - name: driver_number
+        tests: [not_null]
+      - name: lap_number
+        tests: [not_null]
+
+
+  # ------------------------------
+  # FACT MODELS
+  # ------------------------------
+
+  - name: fct_driver_laps
+    columns:
+      - name: meeting_key
+        tests: [not_null]
+      - name: session_key
+        tests: [not_null]
+      - name: driver_number
+        tests: [not_null]
+      - name: lap_number
+        tests: [not_null]
+
+  - name: fct_driver_race_summary
+    columns:
+      - name: meeting_key
+        tests: [not_null]
+      - name: session_key
+        tests: [not_null]
+      - name: driver_number
+        tests: [not_null]
+
+
+  # ------------------------------
+  # FINAL MODEL
+  # ------------------------------
+
+  - name: final_f1
+    columns:
+      - name: meeting_key
+        tests: [not_null]
+      - name: session_key
+        tests: [not_null]
+      - name: driver_number
+        tests: [not_null]
+      - name: lap_number
+        tests: [not_null]
